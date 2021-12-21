@@ -23,7 +23,6 @@ class GameFunctions:
         self.row5 = Group()
         self.rows = (self.row1, self.row2, self.row3, self.row4, self.row5)
         self.aims_results_table = AimsResultsTable(self.screen, ['0', '0', '0', '0', '0'], ['0', '0', '0', '0', '0'])
-        self.create_buttons()
         self.check_button = Button(self.screen, self.settings.WIDTH - 110, self.settings.HEIGHT - 40, 105, 35, 'Check')
         self.check_button.color = (0, 255, 0)
         self.game = Game(screen, score_table, self.rows, self.aims_results_table, self.check_button, game_stats)
@@ -107,7 +106,8 @@ class GameFunctions:
 
         self.game.draw()
 
-        self.update_results()
+        if self.game_stats.game_state == 1:
+            self.update_results()
 
         pg.display.flip()
 

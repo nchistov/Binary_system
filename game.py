@@ -1,4 +1,5 @@
 from button import Button
+from text import Text
 
 
 class Game:
@@ -11,10 +12,14 @@ class Game:
         self.check_button = check_button
         self.stats = stats
 
+        self.title = Text(screen, 500, 50, 'Binary System', (255, 200, 255))
+        self.play_btn = Button(screen, 425, 300, 150, 50, 'Play')
+
     def draw(self):
         match self.stats.game_state:
             case 0:
-                pass
+                self.title.show_msg()
+                self.play_btn.draw_button()
             case 1:
                 self.score_table.draw_table()
 
