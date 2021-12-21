@@ -21,6 +21,7 @@ class GameFunctions:
         self.row4 = Group()
         self.row5 = Group()
         self.rows = (self.row1, self.row2, self.row3, self.row4, self.row5)
+        self.aims_results_table = AimsResultsTable(self.screen, ['0', '0', '0', '0', '0'], ['0', '0', '0', '0', '0'])
 
     def create_aims_and_results(self):
         aims = []
@@ -32,8 +33,6 @@ class GameFunctions:
         if self.game_stats.level <= 5:
             aims = [str(2 ** x) for x in [1, 2, 4, 6, 7]]
             shuffle(aims)
-
-        self.aims_results_table = AimsResultsTable(self.screen, aims, results)
 
         self.aims_results_table.prepare_ames(aims)
         self.aims_results_table.prepare_results(results)
