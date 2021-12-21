@@ -93,11 +93,18 @@ class GameFunctions:
                         exit(0)
                 case pg.MOUSEBUTTONDOWN:
                     mouse_x, mouse_y = pg.mouse.get_pos()
-                    for row in self.rows:
-                        for button in row:
-                            if button.rect.collidepoint(mouse_x, mouse_y):
-                                assert isinstance(button, Button)
-                                button.clicked()
+                    if self.game_stats.game_state == 1:
+                        for row in self.rows:
+                            for button in row:
+                                if button.rect.collidepoint(mouse_x, mouse_y):
+                                    assert isinstance(button, Button)
+                                    button.clicked()
+                    if self.game_stats.game_state == 0:
+                        if self.game.play_btn.rect.collidepoint(mouse_x, mouse_y):
+                            self.game_stats.game_state = 1
+                            self.create_buttons()
+                            self.game.rows = self.rows
+
                     if self.check_button.rect.collidepoint(mouse_x, mouse_y):
                         self.click_check_button()
 
