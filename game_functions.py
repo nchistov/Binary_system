@@ -26,7 +26,7 @@ class GameFunctions:
         self.create_buttons()
         self.check_button = Button(self.screen, self.settings.WIDTH - 110, self.settings.HEIGHT - 40, 105, 35, 'Check')
         self.check_button.color = (0, 255, 0)
-        self.game = Game(screen, score_table, self.rows, self.aims_results_table, self.check_button)
+        self.game = Game(screen, score_table, self.rows, self.aims_results_table, self.check_button, game_stats)
 
     def create_aims_and_results(self):
         aims = []
