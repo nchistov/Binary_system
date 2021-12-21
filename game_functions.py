@@ -1,4 +1,4 @@
-from random import randint, shuffle
+from random import randint, sample
 from time import sleep
 
 import pygame as pg
@@ -35,8 +35,8 @@ class GameFunctions:
             aims.append(str(randint(1, 255)))
 
         if self.game_stats.level <= 5:
-            aims = [str(2 ** x) for x in [1, 2, 4, 6, 7]]
-            shuffle(aims)
+            aims = [str(2 ** x) for x in [1, 2, 3, 4, 6, 5, 7]]
+            aims = sample(aims, 5)
 
         self.aims_results_table.prepare_ames(aims)
         self.aims_results_table.prepare_results(results)
