@@ -22,7 +22,6 @@ def main():
 
     clock = pg.time.Clock()
 
-    gf.create_buttons()
     gf.create_aims_and_results()
 
     while True:

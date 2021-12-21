@@ -7,6 +7,7 @@ from pygame.sprite import Group
 from aim_results_table import AimsResultsTable
 from button import Button
 from text import Text
+from game import Game
 
 
 class GameFunctions:
@@ -22,6 +23,10 @@ class GameFunctions:
         self.row5 = Group()
         self.rows = (self.row1, self.row2, self.row3, self.row4, self.row5)
         self.aims_results_table = AimsResultsTable(self.screen, ['0', '0', '0', '0', '0'], ['0', '0', '0', '0', '0'])
+        self.create_buttons()
+        self.check_button = Button(self.screen, self.settings.WIDTH - 110, self.settings.HEIGHT - 40, 105, 35, 'Check')
+        self.check_button.color = (0, 255, 0)
+        self.game = Game(screen, score_table, self.rows, self.aims_results_table, self.check_button)
 
     def create_aims_and_results(self):
         aims = []
@@ -49,9 +54,6 @@ class GameFunctions:
                 pg.display.flip()
                 sleep(0.1)
             y += self.settings.BUTTON_HEIGHT + 10
-
-        self.check_button = Button(self.screen, self.settings.WIDTH - 110, self.settings.HEIGHT - 40, 105, 35, 'Check')
-        self.check_button.color = (0, 255, 0)
 
     def click_check_button(self):
         if self.aims_results_table.aims == self.aims_results_table.results:
@@ -103,18 +105,9 @@ class GameFunctions:
     def update_screen(self):
         self.screen.fill(self.settings.SCREEN_COLOR)
 
-        self.score_table.draw_table()
-
-        for row in self.rows:
-            for button in row:
-                assert isinstance(button, Button)
-                button.draw_button()
+        self.game.draw()
 
         self.update_results()
-
-        self.aims_results_table.show()
-
-        self.check_button.draw_button()
 
         pg.display.flip()
 
