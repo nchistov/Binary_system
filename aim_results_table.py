@@ -1,5 +1,3 @@
-import pygame as pg
-
 from text import Text
 
 
