@@ -3,3 +3,5 @@
 Train your skills in binary system!
 
 Attention! Python version must be 3.10 or high
+
+![](binary_system.png)
